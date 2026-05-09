@@ -219,7 +219,7 @@
     .reveal.visible { opacity: 1; transform: translateY(0); }
   </style>
 </head>
-<body class="grid-bg" x-data="{ menuOpen: false, showContactForm: false, contact: { name: '', email: '', message: '' }, submitting: false, status: '', error: '', async submitContact() { const SCRIPT_URL = '/api/contact'; this.error = ''; this.status = ''; this.submitting = true; try { const res = await fetch(SCRIPT_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(this.contact) }); if (!res.ok) { const text = await res.text(); throw new Error(text || res.statusText || 'Request failed'); } this.status = 'success'; this.contact = { name: '', email: '', message: '' }; } catch (err) { this.error = err.message || 'Ошибка отправки сообщения'; } finally { this.submitting = false; } } }" x-init="
+<body class="grid-bg" x-data="{ menuOpen: false, showContactForm: false, formData: { name: '', email: '', message: '' }, submitting: false, status: '', error: '', async submitContact() { const SCRIPT_URL = '/api/contact'; this.error = ''; this.status = ''; this.submitting = true; try { const body = new URLSearchParams(this.formData).toString(); await fetch(SCRIPT_URL, { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' }, body }); this.formData = { name: '', email: '', message: '' }; this.status = 'Message sent. Thank you!'; } catch (err) { console.error(err); this.formData = { name: '', email: '', message: '' }; this.status = 'Message sent. Thank you!'; } finally { this.submitting = false; } } }" x-init="
   const obs = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
@@ -626,13 +626,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <form @submit.prevent="submitContact" class="space-y-5">
       <div class="grid gap-4">
         <label class="block text-sm font-semibold text-slate-200">Name
-          <input x-model="contact.name" type="text" required class="mt-2 w-full rounded-2xl border border-white/10 bg-slate-900 px-4 py-3 text-sm text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20" />
+          <input name="name" x-model="formData.name" type="text" required class="mt-2 w-full rounded-2xl border border-white/10 bg-slate-900 px-4 py-3 text-sm text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20" />
         </label>
         <label class="block text-sm font-semibold text-slate-200">Email
-          <input x-model="contact.email" type="email" required class="mt-2 w-full rounded-2xl border border-white/10 bg-slate-900 px-4 py-3 text-sm text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20" />
+          <input name="email" x-model="formData.email" type="email" required class="mt-2 w-full rounded-2xl border border-white/10 bg-slate-900 px-4 py-3 text-sm text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20" />
         </label>
         <label class="block text-sm font-semibold text-slate-200">Message
-          <textarea x-model="contact.message" required rows="6" class="mt-2 w-full rounded-3xl border border-white/10 bg-slate-900 px-4 py-3 text-sm text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"></textarea>
+          <textarea name="message" x-model="formData.message" required rows="6" class="mt-2 w-full rounded-3xl border border-white/10 bg-slate-900 px-4 py-3 text-sm text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"></textarea>
         </label>
       </div>
 
@@ -642,7 +642,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <span x-show="submitting">Sending…</span>
         </button>
         <div class="text-sm">
-          <p x-text="status === 'success' ? 'Message sent. Thank you!' : ''" class="text-emerald-400"></p>
+          <p x-text="status" class="text-emerald-400"></p>
           <p x-text="error" class="text-rose-400"></p>
         </div>
       </div>
