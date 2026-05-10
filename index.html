@@ -1,19 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-MKSVW4QD');</script>
-  <!-- End Google Tag Manager -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta data-rh="true" property="og:image" content="https://datacloudhero.com/img/docusaurus-social-card.jpg">
   <meta data-rh="true" property="og:title" content="datacloudhero.com - Data & AI Engineering">
   <meta data-rh="true" property="og:description" content="Learn about data and AI engineering with our comprehensive resources and tutorials.">
   <title>datacloudhero.com - Data & AI Engineering</title>
+  <link rel="stylesheet" href="/assets/vendor/cookieconsent/cookieconsent.css">
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
   <link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.1/dist/full.min.css" rel="stylesheet" />
@@ -228,10 +222,6 @@
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 ">
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MKSVW4QD"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
 
 <!-- ═══════════════════════════════ NAVBAR ═══════════════════════════════ -->
 <div class="navbar-custom px-6 lg:px-8 py-4">
@@ -703,12 +693,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <img src="https://datacloudhero.com/img/logo.svg" alt="datacloudhero" class="h-7 w-auto" />
     </div>
     <div class="mono text-xs text-slate-600">© 2025 datacloudhero.com. Data & AI Engineering.</div>
-    <div class="flex gap-6">
-      <a href="#services" class="mono text-xs text-slate-500 hover:text-accent transition-colors">Services</a>
-      <a href="#stack" class="mono text-xs text-slate-500 hover:text-accent transition-colors">Stack</a>
-      <a href="#contact" class="mono text-xs text-slate-500 hover:text-accent transition-colors">Contact</a>
-      <a href="https://blog.datacloudhero.com" class="mono text-xs text-slate-500 hover:text-accent transition-colors">Blog</a>
-    </div>
+      <div class="flex gap-6">
+        <a href="#services" class="mono text-xs text-slate-500 hover:text-accent transition-colors">Services</a>
+        <a href="#stack" class="mono text-xs text-slate-500 hover:text-accent transition-colors">Stack</a>
+        <a href="#contact" class="mono text-xs text-slate-500 hover:text-accent transition-colors">Contact</a>
+        <a href="https://blog.datacloudhero.com" class="mono text-xs text-slate-500 hover:text-accent transition-colors">Blog</a>
+
+        <button
+          type="button"
+          data-cc="show-preferencesModal"
+          class="mono text-xs text-slate-500 hover:text-accent transition-colors bg-transparent border-0 p-0 cursor-pointer"
+        >
+          Cookie settings
+        </button>
+      </div>
   </div>
 </footer>
 </div><!-- /page-wrapper -->
@@ -716,5 +714,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script>
   lucide.createIcons();
 </script>
+<script type="module" src="/assets/js/cookieconsent-config.js"></script>
 </body>
 </html>
