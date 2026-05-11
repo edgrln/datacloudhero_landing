@@ -29,8 +29,10 @@ window.gtag = function gtag() {
 };
 
 function getCookieValue(name) {
+  const escapedName = name.replace(/[.$?*|{}()[\]\\/+^]/g, '\\$&');
+
   const match = document.cookie.match(
-    new RegExp('(?:^|; )' + name.replace(/[.$?*|{}()[\]\\/+^]/g, '\\$&') + '=([^;]*)'),
+    new RegExp(`(?:^|; )${escapedName}=([^;]*)`),
   );
 
   return match ? decodeURIComponent(match[1]) : null;
@@ -74,18 +76,49 @@ function getCookieConsentState() {
   };
 }
 
-function getConsentState() {
-  // Если пользователь уже сделал выбор на блоге,
-  // лендинг должен переиспользовать этот выбор.
-  if (hasSharedConsent()) {
-    return getSharedConsentState();
+function createCcCookieFromSharedConsentIfNeeded() {
+  if (!hasSharedConsent()) {
+    return;
   }
 
-  // Иначе используем состояние Orestbida cc_cookie.
-  return getCookieConsentState();
+  if (getCookieValue(COOKIE_CONSENT_NAME) !== null) {
+    return;
+  }
+
+  const {analyticsGranted, marketingGranted} = getSharedConsentState();
+
+  const categories = [CAT_NECESSARY];
+
+  if (analyticsGranted) {
+    categories.push(CAT_ANALYTICS);
+  }
+
+  if (marketingGranted) {
+    categories.push(CAT_MARKETING);
+  }
+
+  const now = new Date().toISOString();
+
+  const ccCookieValue = {
+    categories,
+    revision: 1,
+    data: null,
+    consentTimestamp: now,
+    consentId:
+      window.crypto?.randomUUID?.() ||
+      `${Date.now()}-${Math.random().toString(16).slice(2)}`,
+    services: {},
+    languageCode: 'en',
+    lastConsentTimestamp: now,
+  };
+
+  setSharedCookie(
+    COOKIE_CONSENT_NAME,
+    encodeURIComponent(JSON.stringify(ccCookieValue)),
+  );
 }
 
-function applyGoogleConsent({ analyticsGranted, marketingGranted }) {
+function applyGoogleConsent({analyticsGranted, marketingGranted}) {
   window.gtag('consent', 'update', {
     analytics_storage: analyticsGranted ? 'granted' : 'denied',
 
@@ -99,7 +132,15 @@ function applyGoogleConsent({ analyticsGranted, marketingGranted }) {
   });
 }
 
-function syncSharedConsentCookies({ analyticsGranted, marketingGranted }) {
+function pushConsentUpdateEvent({analyticsGranted, marketingGranted}) {
+  window.dataLayer.push({
+    event: 'cookie_consent_update',
+    analytics_consent: analyticsGranted ? 'granted' : 'denied',
+    marketing_consent: marketingGranted ? 'granted' : 'denied',
+  });
+}
+
+function syncSharedConsentCookies({analyticsGranted, marketingGranted}) {
   setSharedCookie(
     SHARED_ANALYTICS_COOKIE,
     analyticsGranted ? 'true' : 'false',
@@ -116,12 +157,7 @@ function updateGoogleConsent() {
 
   syncSharedConsentCookies(consentState);
   applyGoogleConsent(consentState);
-
-  window.dataLayer.push({
-    event: 'cookie_consent_update',
-    analytics_consent: consentState.analyticsGranted ? 'granted' : 'denied',
-    marketing_consent: consentState.marketingGranted ? 'granted' : 'denied',
-  });
+  pushConsentUpdateEvent(consentState);
 }
 
 function loadGtm() {
@@ -160,19 +196,14 @@ if (hasSharedConsent()) {
   const sharedConsentState = getSharedConsentState();
 
   applyGoogleConsent(sharedConsentState);
-
-  window.dataLayer.push({
-    event: 'cookie_consent_update',
-    analytics_consent: sharedConsentState.analyticsGranted
-      ? 'granted'
-      : 'denied',
-    marketing_consent: sharedConsentState.marketingGranted
-      ? 'granted'
-      : 'denied',
-  });
+  pushConsentUpdateEvent(sharedConsentState);
 }
 
-// 3. Загружаем GTM.
+// 3. Если есть shared cookies, но нет cc_cookie,
+// создаём cc_cookie, чтобы UI Orestbida показал правильные переключатели.
+createCcCookieFromSharedConsentIfNeeded();
+
+// 4. Загружаем GTM.
 loadGtm();
 
 CookieConsent.run({
@@ -215,10 +246,10 @@ CookieConsent.run({
     [CAT_ANALYTICS]: {
       autoClear: {
         cookies: [
-          { name: /^_ga/ },
-          { name: '_gid' },
-          { name: /^_ga/, domain: COOKIE_DOMAIN },
-          { name: '_gid', domain: COOKIE_DOMAIN },
+          {name: /^_ga/},
+          {name: '_gid'},
+          {name: /^_ga/, domain: COOKIE_DOMAIN},
+          {name: '_gid', domain: COOKIE_DOMAIN},
         ],
       },
     },
@@ -226,15 +257,15 @@ CookieConsent.run({
     [CAT_MARKETING]: {
       autoClear: {
         cookies: [
-          { name: /^_gcl_/ },
-          { name: '_fbp' },
-          { name: '_fbc' },
-          { name: 'li_fat_id' },
+          {name: /^_gcl_/},
+          {name: '_fbp'},
+          {name: '_fbc'},
+          {name: 'li_fat_id'},
 
-          { name: /^_gcl_/, domain: COOKIE_DOMAIN },
-          { name: '_fbp', domain: COOKIE_DOMAIN },
-          { name: '_fbc', domain: COOKIE_DOMAIN },
-          { name: 'li_fat_id', domain: COOKIE_DOMAIN },
+          {name: /^_gcl_/, domain: COOKIE_DOMAIN},
+          {name: '_fbp', domain: COOKIE_DOMAIN},
+          {name: '_fbc', domain: COOKIE_DOMAIN},
+          {name: 'li_fat_id', domain: COOKIE_DOMAIN},
         ],
       },
     },
