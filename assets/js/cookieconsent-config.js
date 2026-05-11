@@ -6,10 +6,9 @@ const CAT_NECESSARY = 'necessary';
 const CAT_ANALYTICS = 'analytics';
 const CAT_MARKETING = 'marketing';
 
-/**
- * Эти имена можно оставить такими, чтобы быть совместимыми
- * с текущей логикой блога.
- */
+const COOKIE_CONSENT_NAME = 'cc_cookie';
+
+// Shared cookies между blog.datacloudhero.com и datacloudhero.com
 const SHARED_ANALYTICS_COOKIE = 'gtm_consent';
 const SHARED_MARKETING_COOKIE = 'dch_marketing_consent';
 
@@ -29,25 +28,13 @@ window.gtag = function gtag() {
   window.dataLayer.push(arguments);
 };
 
-/**
- * Consent default должен быть задан до загрузки GTM.
- */
-window.gtag('consent', 'default', {
-  analytics_storage: 'denied',
-  ad_storage: 'denied',
-  ad_user_data: 'denied',
-  ad_personalization: 'denied',
-  functionality_storage: 'granted',
-  security_storage: 'granted',
-  personalization_storage: 'denied',
-  wait_for_update: 500,
-});
+function getCookieValue(name) {
+  const match = document.cookie.match(
+    new RegExp('(?:^|; )' + name.replace(/[.$?*|{}()[\]\\/+^]/g, '\\$&') + '=([^;]*)'),
+  );
 
-/**
- * Для GTM-first подхода загружаем GTM сразу.
- * Теги внутри GTM должны уважать consent settings.
- */
-loadGtm();
+  return match ? decodeURIComponent(match[1]) : null;
+}
 
 function setSharedCookie(name, value) {
   const expires = new Date();
@@ -66,11 +53,50 @@ function setSharedCookie(name, value) {
   document.cookie = cookie;
 }
 
-function getConsentState() {
+function hasSharedConsent() {
+  return (
+    getCookieValue(SHARED_ANALYTICS_COOKIE) !== null ||
+    getCookieValue(SHARED_MARKETING_COOKIE) !== null
+  );
+}
+
+function getSharedConsentState() {
+  return {
+    analyticsGranted: getCookieValue(SHARED_ANALYTICS_COOKIE) === 'true',
+    marketingGranted: getCookieValue(SHARED_MARKETING_COOKIE) === 'true',
+  };
+}
+
+function getCookieConsentState() {
   return {
     analyticsGranted: CookieConsent.acceptedCategory(CAT_ANALYTICS),
     marketingGranted: CookieConsent.acceptedCategory(CAT_MARKETING),
   };
+}
+
+function getConsentState() {
+  // Если пользователь уже сделал выбор на блоге,
+  // лендинг должен переиспользовать этот выбор.
+  if (hasSharedConsent()) {
+    return getSharedConsentState();
+  }
+
+  // Иначе используем состояние Orestbida cc_cookie.
+  return getCookieConsentState();
+}
+
+function applyGoogleConsent({ analyticsGranted, marketingGranted }) {
+  window.gtag('consent', 'update', {
+    analytics_storage: analyticsGranted ? 'granted' : 'denied',
+
+    ad_storage: marketingGranted ? 'granted' : 'denied',
+    ad_user_data: marketingGranted ? 'granted' : 'denied',
+    ad_personalization: marketingGranted ? 'granted' : 'denied',
+
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    personalization_storage: 'denied',
+  });
 }
 
 function syncSharedConsentCookies({ analyticsGranted, marketingGranted }) {
@@ -86,27 +112,15 @@ function syncSharedConsentCookies({ analyticsGranted, marketingGranted }) {
 }
 
 function updateGoogleConsent() {
-  const consentState = getConsentState();
-  const { analyticsGranted, marketingGranted } = consentState;
+  const consentState = getCookieConsentState();
 
   syncSharedConsentCookies(consentState);
-
-  window.gtag('consent', 'update', {
-    analytics_storage: analyticsGranted ? 'granted' : 'denied',
-
-    ad_storage: marketingGranted ? 'granted' : 'denied',
-    ad_user_data: marketingGranted ? 'granted' : 'denied',
-    ad_personalization: marketingGranted ? 'granted' : 'denied',
-
-    functionality_storage: 'granted',
-    security_storage: 'granted',
-    personalization_storage: 'denied',
-  });
+  applyGoogleConsent(consentState);
 
   window.dataLayer.push({
     event: 'cookie_consent_update',
-    analytics_consent: analyticsGranted ? 'granted' : 'denied',
-    marketing_consent: marketingGranted ? 'granted' : 'denied',
+    analytics_consent: consentState.analyticsGranted ? 'granted' : 'denied',
+    marketing_consent: consentState.marketingGranted ? 'granted' : 'denied',
   });
 }
 
@@ -129,13 +143,48 @@ function loadGtm() {
   document.head.appendChild(script);
 }
 
+// 1. Сначала default denied.
+window.gtag('consent', 'default', {
+  analytics_storage: 'denied',
+  ad_storage: 'denied',
+  ad_user_data: 'denied',
+  ad_personalization: 'denied',
+  functionality_storage: 'granted',
+  security_storage: 'granted',
+  personalization_storage: 'denied',
+  wait_for_update: 500,
+});
+
+// 2. Если consent уже пришёл с блога — применяем его до загрузки GTM.
+if (hasSharedConsent()) {
+  const sharedConsentState = getSharedConsentState();
+
+  applyGoogleConsent(sharedConsentState);
+
+  window.dataLayer.push({
+    event: 'cookie_consent_update',
+    analytics_consent: sharedConsentState.analyticsGranted
+      ? 'granted'
+      : 'denied',
+    marketing_consent: sharedConsentState.marketingGranted
+      ? 'granted'
+      : 'denied',
+  });
+}
+
+// 3. Загружаем GTM.
+loadGtm();
+
 CookieConsent.run({
   mode: 'opt-in',
 
   revision: 1,
 
+  // Если есть shared consent с блога, баннер не показываем.
+  autoShow: !hasSharedConsent(),
+
   cookie: {
-    name: 'cc_cookie',
+    name: COOKIE_CONSENT_NAME,
     domain: COOKIE_DOMAIN,
     path: '/',
     secure: window.location.protocol === 'https:',
