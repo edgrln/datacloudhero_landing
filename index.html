@@ -8,6 +8,122 @@
   <meta data-rh="true" property="og:description" content="Learn about data and AI engineering with our comprehensive resources and tutorials.">
   <title>datacloudhero.com - Data & AI Engineering</title>
   <link rel="stylesheet" href="/assets/vendor/cookieconsent/cookieconsent.css">
+  <style>
+  :root {
+    --cc-bg: #ffffff;
+    --cc-primary-color: #2c2f31;
+    --cc-secondary-color: #5e6266;
+
+    --cc-btn-primary-bg: #30363c;
+    --cc-btn-primary-color: #ffffff;
+    --cc-btn-primary-border-color: #30363c;
+    --cc-btn-primary-hover-bg: #000000;
+    --cc-btn-primary-hover-color: #ffffff;
+    --cc-btn-primary-hover-border-color: #000000;
+
+    --cc-btn-secondary-bg: #eaeff2;
+    --cc-btn-secondary-color: #2c2f31;
+    --cc-btn-secondary-border-color: #eaeff2;
+    --cc-btn-secondary-hover-bg: #d4dae0;
+    --cc-btn-secondary-hover-color: #000000;
+    --cc-btn-secondary-hover-border-color: #d4dae0;
+
+    --cc-toggle-on-bg: #30363c;
+    --cc-toggle-off-bg: #667481;
+    --cc-toggle-on-knob-bg: #ffffff;
+    --cc-toggle-off-knob-bg: #ffffff;
+
+    --cc-toggle-readonly-bg: #d5dee2;
+    --cc-toggle-readonly-knob-bg: #ffffff;
+    --cc-toggle-readonly-knob-icon-color: #d5dee2;
+
+    --cc-cookie-category-block-bg: #f0f4f7;
+    --cc-cookie-category-block-border: #f0f4f7;
+    --cc-cookie-category-block-hover-bg: #e9eff4;
+    --cc-cookie-category-block-hover-border: #e9eff4;
+
+    --cc-separator-border-color: #f0f4f7;
+    --cc-footer-bg: #ffffff;
+    --cc-footer-color: #5e6266;
+    --cc-footer-border-color: #f0f4f7;
+
+    --cc-modal-border-radius: 0.5rem;
+    --cc-btn-border-radius: 0.4rem;
+  }
+
+  #cc-main .section__toggle:checked ~ .toggle__icon {
+    background: #30363c;
+    box-shadow: 0 0 0 1px #30363c;
+  }
+
+  #cc-main .section__toggle:checked ~ .toggle__icon .toggle__icon-on svg {
+    stroke: #30363c;
+  }
+
+  #cc-main .section__toggle:not(:checked) ~ .toggle__icon {
+    background: #667481;
+    box-shadow: 0 0 0 1px #667481;
+  }
+
+  #cc-main .section__toggle:not(:checked) ~ .toggle__icon .toggle__icon-off svg {
+    stroke: #667481;
+  }
+
+  #cc-main .section__toggle:checked:disabled ~ .toggle__icon {
+    background: #d5dee2;
+    box-shadow: 0 0 0 1px #d5dee2;
+  }
+
+  #cc-main .section__toggle:checked:disabled ~ .toggle__icon .toggle__icon-circle {
+    background: #ffffff;
+  }
+
+  #cc-main .section__toggle:checked:disabled ~ .toggle__icon svg {
+    stroke: #d5dee2;
+  }
+
+  #cc-main .cm,
+  #cc-main .pm {
+    box-shadow: 0 0.625em 1.875em rgba(0, 0, 2, 0.3);
+  }
+
+  #cc-main .pm__section:not(:first-child) {
+    background: #f0f4f7;
+    border-color: #f0f4f7;
+  }
+
+  #cc-main .pm__section:first-child {
+    background: transparent;
+  }
+
+  #cc-main .pm__section--toggle {
+    background: #f0f4f7;
+  }
+
+  #cc-main .pm__section--toggle .pm__section-title {
+    background: #f0f4f7;
+    border-color: #f0f4f7;
+  }
+
+  #cc-main .pm__section--toggle .pm__section-title:hover {
+    background: #e9eff4;
+    border-color: #e9eff4;
+  }
+
+  #cc-main .pm__section--expandable .pm__section-arrow {
+    background: #d5dee2;
+  }
+
+  #cc-main .pm__close-btn {
+    background: #eaeff2;
+    border-color: #eaeff2;
+  }
+
+  #cc-main .pm__close-btn:hover {
+    background: #d4dae0;
+    border-color: #d4dae0;
+  }
+  </style>
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
   <link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.1/dist/full.min.css" rel="stylesheet" />
