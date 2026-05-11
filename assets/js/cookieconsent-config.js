@@ -6,12 +6,21 @@ const CAT_NECESSARY = 'necessary';
 const CAT_ANALYTICS = 'analytics';
 const CAT_MARKETING = 'marketing';
 
+/**
+ * Эти имена можно оставить такими, чтобы быть совместимыми
+ * с текущей логикой блога.
+ */
+const SHARED_ANALYTICS_COOKIE = 'gtm_consent';
+const SHARED_MARKETING_COOKIE = 'dch_marketing_consent';
+
+const COOKIE_DAYS = 180;
+
 const isDatacloudheroDomain =
   window.location.hostname === 'datacloudhero.com' ||
   window.location.hostname.endsWith('.datacloudhero.com');
 
 const COOKIE_DOMAIN = isDatacloudheroDomain
-  ? 'datacloudhero.com'
+  ? '.datacloudhero.com'
   : window.location.hostname;
 
 window.dataLayer = window.dataLayer || [];
@@ -20,6 +29,9 @@ window.gtag = function gtag() {
   window.dataLayer.push(arguments);
 };
 
+/**
+ * Consent default должен быть задан до загрузки GTM.
+ */
 window.gtag('consent', 'default', {
   analytics_storage: 'denied',
   ad_storage: 'denied',
@@ -31,6 +43,29 @@ window.gtag('consent', 'default', {
   wait_for_update: 500,
 });
 
+/**
+ * Для GTM-first подхода загружаем GTM сразу.
+ * Теги внутри GTM должны уважать consent settings.
+ */
+loadGtm();
+
+function setSharedCookie(name, value) {
+  const expires = new Date();
+  expires.setTime(expires.getTime() + COOKIE_DAYS * 24 * 60 * 60 * 1000);
+
+  let cookie = `${name}=${value}; expires=${expires.toUTCString()}; path=/; SameSite=Lax`;
+
+  if (window.location.protocol === 'https:') {
+    cookie += '; Secure';
+  }
+
+  if (isDatacloudheroDomain) {
+    cookie += `; Domain=${COOKIE_DOMAIN}`;
+  }
+
+  document.cookie = cookie;
+}
+
 function getConsentState() {
   return {
     analyticsGranted: CookieConsent.acceptedCategory(CAT_ANALYTICS),
@@ -38,8 +73,23 @@ function getConsentState() {
   };
 }
 
+function syncSharedConsentCookies({ analyticsGranted, marketingGranted }) {
+  setSharedCookie(
+    SHARED_ANALYTICS_COOKIE,
+    analyticsGranted ? 'true' : 'false',
+  );
+
+  setSharedCookie(
+    SHARED_MARKETING_COOKIE,
+    marketingGranted ? 'true' : 'false',
+  );
+}
+
 function updateGoogleConsent() {
-  const { analyticsGranted, marketingGranted } = getConsentState();
+  const consentState = getConsentState();
+  const { analyticsGranted, marketingGranted } = consentState;
+
+  syncSharedConsentCookies(consentState);
 
   window.gtag('consent', 'update', {
     analytics_storage: analyticsGranted ? 'granted' : 'denied',
@@ -79,16 +129,6 @@ function loadGtm() {
   document.head.appendChild(script);
 }
 
-function updateConsentAndLoadGtmIfNeeded() {
-  updateGoogleConsent();
-
-  const { analyticsGranted, marketingGranted } = getConsentState();
-
-  if (analyticsGranted || marketingGranted) {
-    loadGtm();
-  }
-}
-
 CookieConsent.run({
   mode: 'opt-in',
 
@@ -100,7 +140,7 @@ CookieConsent.run({
     path: '/',
     secure: window.location.protocol === 'https:',
     sameSite: 'Lax',
-    expiresAfterDays: 180,
+    expiresAfterDays: COOKIE_DAYS,
   },
 
   guiOptions: {
@@ -151,8 +191,8 @@ CookieConsent.run({
     },
   },
 
-  onConsent: updateConsentAndLoadGtmIfNeeded,
-  onChange: updateConsentAndLoadGtmIfNeeded,
+  onConsent: updateGoogleConsent,
+  onChange: updateGoogleConsent,
 
   language: {
     default: 'en',
