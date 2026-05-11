@@ -11,6 +11,7 @@ const COOKIE_CONSENT_NAME = 'cc_cookie';
 // Shared cookies между blog.datacloudhero.com и datacloudhero.com
 const SHARED_ANALYTICS_COOKIE = 'gtm_consent';
 const SHARED_MARKETING_COOKIE = 'dch_marketing_consent';
+const SHARED_UPDATED_AT_COOKIE = 'dch_consent_updated_at';
 
 const COOKIE_DAYS = 180;
 
@@ -66,6 +67,7 @@ function getSharedConsentState() {
   return {
     analyticsGranted: getCookieValue(SHARED_ANALYTICS_COOKIE) === 'true',
     marketingGranted: getCookieValue(SHARED_MARKETING_COOKIE) === 'true',
+    sharedUpdatedAt: getCookieValue(SHARED_UPDATED_AT_COOKIE),
   };
 }
 
@@ -81,7 +83,8 @@ function syncCcCookieFromSharedConsent() {
     return;
   }
 
-  const {analyticsGranted, marketingGranted} = getSharedConsentState();
+  const {analyticsGranted, marketingGranted, sharedUpdatedAt} =
+    getSharedConsentState();
 
   const categories = [CAT_NECESSARY];
 
@@ -114,7 +117,10 @@ function syncCcCookieFromSharedConsent() {
   const ccCookieValue = {
     categories,
     revision: 1,
-    data: null,
+    data: {
+      syncedFromSharedConsent: true,
+      sharedUpdatedAt: sharedUpdatedAt || null,
+    },
     consentTimestamp: previousConsentTimestamp || now,
     consentId:
       previousConsentId ||
@@ -163,12 +169,16 @@ function syncSharedConsentCookies({analyticsGranted, marketingGranted}) {
     SHARED_MARKETING_COOKIE,
     marketingGranted ? 'true' : 'false',
   );
+
+  setSharedCookie(SHARED_UPDATED_AT_COOKIE, String(Date.now()));
 }
 
 function updateGoogleConsent() {
   const consentState = getCookieConsentState();
 
   syncSharedConsentCookies(consentState);
+  syncCcCookieFromSharedConsent();
+
   applyGoogleConsent(consentState);
   pushConsentUpdateEvent(consentState);
 }
