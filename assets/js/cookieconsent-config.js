@@ -76,12 +76,8 @@ function getCookieConsentState() {
   };
 }
 
-function createCcCookieFromSharedConsentIfNeeded() {
+function syncCcCookieFromSharedConsent() {
   if (!hasSharedConsent()) {
-    return;
-  }
-
-  if (getCookieValue(COOKIE_CONSENT_NAME) !== null) {
     return;
   }
 
@@ -97,14 +93,31 @@ function createCcCookieFromSharedConsentIfNeeded() {
     categories.push(CAT_MARKETING);
   }
 
+  const existingCcCookie = getCookieValue(COOKIE_CONSENT_NAME);
+
+  let previousConsentId = null;
+  let previousConsentTimestamp = null;
+
+  if (existingCcCookie) {
+    try {
+      const parsed = JSON.parse(existingCcCookie);
+
+      previousConsentId = parsed.consentId || null;
+      previousConsentTimestamp = parsed.consentTimestamp || null;
+    } catch {
+      // ignore invalid old cc_cookie
+    }
+  }
+
   const now = new Date().toISOString();
 
   const ccCookieValue = {
     categories,
     revision: 1,
     data: null,
-    consentTimestamp: now,
+    consentTimestamp: previousConsentTimestamp || now,
     consentId:
+      previousConsentId ||
       window.crypto?.randomUUID?.() ||
       `${Date.now()}-${Math.random().toString(16).slice(2)}`,
     services: {},
@@ -191,17 +204,17 @@ window.gtag('consent', 'default', {
   wait_for_update: 500,
 });
 
-// 2. Если consent уже пришёл с блога — применяем его до загрузки GTM.
+// 2. Если consent уже пришёл с блога — синхронизируем cc_cookie,
+// чтобы UI Orestbida показывал актуальные переключатели.
+syncCcCookieFromSharedConsent();
+
+// 3. Если есть shared consent — применяем его до загрузки GTM.
 if (hasSharedConsent()) {
   const sharedConsentState = getSharedConsentState();
 
   applyGoogleConsent(sharedConsentState);
   pushConsentUpdateEvent(sharedConsentState);
 }
-
-// 3. Если есть shared cookies, но нет cc_cookie,
-// создаём cc_cookie, чтобы UI Orestbida показал правильные переключатели.
-createCcCookieFromSharedConsentIfNeeded();
 
 // 4. Загружаем GTM.
 loadGtm();
