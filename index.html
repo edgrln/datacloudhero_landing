@@ -6,128 +6,139 @@
   <meta data-rh="true" property="og:image" content="https://datacloudhero.com/img/docusaurus-social-card.jpg">
   <meta data-rh="true" property="og:title" content="datacloudhero.com - Data & AI Engineering">
   <meta data-rh="true" property="og:description" content="Learn about data and AI engineering with our comprehensive resources and tutorials.">
+
   <title>datacloudhero.com - Data & AI Engineering</title>
-  <link rel="stylesheet" href="/assets/vendor/cookieconsent/cookieconsent.css">
+
+  <link rel="stylesheet" href="/assets/vendor/cookieconsent/cookieconsent.css?v=4">
+
   <style>
-  :root {
-    --cc-bg: #ffffff;
-    --cc-primary-color: #2c2f31;
-    --cc-secondary-color: #5e6266;
+    :root,
+    .cc--darkmode {
+      --cc-bg: #ffffff;
+      --cc-primary-color: #2c2f31;
+      --cc-secondary-color: #5e6266;
 
-    --cc-btn-primary-bg: #30363c;
-    --cc-btn-primary-color: #ffffff;
-    --cc-btn-primary-border-color: #30363c;
-    --cc-btn-primary-hover-bg: #000000;
-    --cc-btn-primary-hover-color: #ffffff;
-    --cc-btn-primary-hover-border-color: #000000;
+      --cc-btn-primary-bg: #30363c;
+      --cc-btn-primary-color: #ffffff;
+      --cc-btn-primary-border-color: #30363c;
+      --cc-btn-primary-hover-bg: #000000;
+      --cc-btn-primary-hover-color: #ffffff;
+      --cc-btn-primary-hover-border-color: #000000;
 
-    --cc-btn-secondary-bg: #eaeff2;
-    --cc-btn-secondary-color: #2c2f31;
-    --cc-btn-secondary-border-color: #eaeff2;
-    --cc-btn-secondary-hover-bg: #d4dae0;
-    --cc-btn-secondary-hover-color: #000000;
-    --cc-btn-secondary-hover-border-color: #d4dae0;
+      --cc-btn-secondary-bg: #eaeff2;
+      --cc-btn-secondary-color: #2c2f31;
+      --cc-btn-secondary-border-color: #eaeff2;
+      --cc-btn-secondary-hover-bg: #d4dae0;
+      --cc-btn-secondary-hover-color: #000000;
+      --cc-btn-secondary-hover-border-color: #d4dae0;
 
-    --cc-toggle-on-bg: #30363c;
-    --cc-toggle-off-bg: #667481;
-    --cc-toggle-on-knob-bg: #ffffff;
-    --cc-toggle-off-knob-bg: #ffffff;
+      --cc-toggle-on-bg: #1bab53;
+      --cc-toggle-off-bg: #667481;
+      --cc-toggle-on-knob-bg: #ffffff;
+      --cc-toggle-off-knob-bg: #ffffff;
 
-    --cc-toggle-readonly-bg: #d5dee2;
-    --cc-toggle-readonly-knob-bg: #ffffff;
-    --cc-toggle-readonly-knob-icon-color: #d5dee2;
+      --cc-toggle-readonly-bg: #d5dee2;
+      --cc-toggle-readonly-knob-bg: #ffffff;
+      --cc-toggle-readonly-knob-icon-color: #d5dee2;
 
-    --cc-cookie-category-block-bg: #f0f4f7;
-    --cc-cookie-category-block-border: #f0f4f7;
-    --cc-cookie-category-block-hover-bg: #e9eff4;
-    --cc-cookie-category-block-hover-border: #e9eff4;
+      --cc-cookie-category-block-bg: #f0f4f7;
+      --cc-cookie-category-block-border: #f0f4f7;
+      --cc-cookie-category-block-hover-bg: #e9eff4;
+      --cc-cookie-category-block-hover-border: #e9eff4;
 
-    --cc-separator-border-color: #f0f4f7;
-    --cc-footer-bg: #ffffff;
-    --cc-footer-color: #5e6266;
-    --cc-footer-border-color: #f0f4f7;
+      --cc-separator-border-color: #f0f4f7;
+      --cc-footer-bg: #ffffff;
+      --cc-footer-color: #5e6266;
+      --cc-footer-border-color: #f0f4f7;
 
-    --cc-modal-border-radius: 0.5rem;
-    --cc-btn-border-radius: 0.4rem;
-  }
+      --cc-modal-border-radius: 0.5rem;
+      --cc-btn-border-radius: 0.4rem;
+    }
 
-  #cc-main .section__toggle:checked ~ .toggle__icon {
-    background: #30363c;
-    box-shadow: 0 0 0 1px #30363c;
-  }
+    #cc-main {
+      color-scheme: light;
+    }
 
-  #cc-main .section__toggle:checked ~ .toggle__icon .toggle__icon-on svg {
-    stroke: #30363c;
-  }
+    #cc-main .section__toggle:checked ~ .toggle__icon {
+      background: #1bab53 !important;
+      box-shadow: 0 0 0 1px #1bab53 !important;
+    }
 
-  #cc-main .section__toggle:not(:checked) ~ .toggle__icon {
-    background: #667481;
-    box-shadow: 0 0 0 1px #667481;
-  }
+    #cc-main .section__toggle:checked ~ .toggle__icon .toggle__icon-on svg {
+      stroke: #1bab53 !important;
+    }
 
-  #cc-main .section__toggle:not(:checked) ~ .toggle__icon .toggle__icon-off svg {
-    stroke: #667481;
-  }
+    #cc-main .section__toggle:not(:checked) ~ .toggle__icon {
+      background: #667481 !important;
+      box-shadow: 0 0 0 1px #667481 !important;
+    }
 
-  #cc-main .section__toggle:checked:disabled ~ .toggle__icon {
-    background: #d5dee2;
-    box-shadow: 0 0 0 1px #d5dee2;
-  }
+    #cc-main .section__toggle:not(:checked) ~ .toggle__icon .toggle__icon-off svg {
+      stroke: #667481 !important;
+    }
 
-  #cc-main .section__toggle:checked:disabled ~ .toggle__icon .toggle__icon-circle {
-    background: #ffffff;
-  }
+    #cc-main .section__toggle:checked:disabled ~ .toggle__icon {
+      background: #d5dee2 !important;
+      box-shadow: 0 0 0 1px #d5dee2 !important;
+    }
 
-  #cc-main .section__toggle:checked:disabled ~ .toggle__icon svg {
-    stroke: #d5dee2;
-  }
+    #cc-main .section__toggle:checked:disabled ~ .toggle__icon .toggle__icon-circle {
+      background: #ffffff !important;
+    }
 
-  #cc-main .cm,
-  #cc-main .pm {
-    box-shadow: 0 0.625em 1.875em rgba(0, 0, 2, 0.3);
-  }
+    #cc-main .section__toggle:checked:disabled ~ .toggle__icon svg {
+      stroke: #d5dee2 !important;
+    }
 
-  #cc-main .pm__section:not(:first-child) {
-    background: #f0f4f7;
-    border-color: #f0f4f7;
-  }
+    #cc-main .cm,
+    #cc-main .pm {
+      box-shadow: 0 0.625em 1.875em rgba(0, 0, 2, 0.3);
+    }
 
-  #cc-main .pm__section:first-child {
-    background: transparent;
-  }
+    #cc-main .pm__section:not(:first-child) {
+      background: #f0f4f7;
+      border-color: #f0f4f7;
+    }
 
-  #cc-main .pm__section--toggle {
-    background: #f0f4f7;
-  }
+    #cc-main .pm__section:first-child {
+      background: transparent;
+    }
 
-  #cc-main .pm__section--toggle .pm__section-title {
-    background: #f0f4f7;
-    border-color: #f0f4f7;
-  }
+    #cc-main .pm__section--toggle {
+      background: #f0f4f7;
+    }
 
-  #cc-main .pm__section--toggle .pm__section-title:hover {
-    background: #e9eff4;
-    border-color: #e9eff4;
-  }
+    #cc-main .pm__section--toggle .pm__section-title {
+      background: #f0f4f7;
+      border-color: #f0f4f7;
+    }
 
-  #cc-main .pm__section--expandable .pm__section-arrow {
-    background: #d5dee2;
-  }
+    #cc-main .pm__section--toggle .pm__section-title:hover {
+      background: #e9eff4;
+      border-color: #e9eff4;
+    }
 
-  #cc-main .pm__close-btn {
-    background: #eaeff2;
-    border-color: #eaeff2;
-  }
+    #cc-main .pm__section--expandable .pm__section-arrow {
+      background: #d5dee2;
+    }
 
-  #cc-main .pm__close-btn:hover {
-    background: #d4dae0;
-    border-color: #d4dae0;
-  }
+    #cc-main .pm__close-btn {
+      background: #eaeff2;
+      border-color: #eaeff2;
+    }
+
+    #cc-main .pm__close-btn:hover {
+      background: #d4dae0;
+      border-color: #d4dae0;
+    }
   </style>
+
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+
   <link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.1/dist/full.min.css" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
@@ -139,16 +150,19 @@
       --bg-deep: #040810;
     }
 
-    * { box-sizing: border-box; }
-    html, body { overflow-x: hidden; max-width: 100%; }
-
-    .page-wrapper {
-      max-width: 1600px;
-      margin: 0 auto;
-      position: relative;
+    * {
+      box-sizing: border-box;
     }
 
-    html { scroll-behavior: smooth; }
+    html,
+    body {
+      overflow-x: hidden;
+      max-width: 100%;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       font-family: 'DM Sans', sans-serif;
@@ -157,39 +171,76 @@
       overflow-x: hidden;
     }
 
-    .mono { font-family: 'JetBrains Mono', monospace; }
+    .page-wrapper {
+      max-width: 1600px;
+      margin: 0 auto;
+      position: relative;
+    }
 
-    /* ── Grid background ── */
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
     .grid-bg {
       background-image:
-        linear-gradient(rgba(27,171,83,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(27,171,83,0.04) 1px, transparent 1px);
+        linear-gradient(rgba(27, 171, 83, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(27, 171, 83, 0.04) 1px, transparent 1px);
       background-size: 60px 60px;
     }
 
-    /* ── Glow blobs ── */
     .blob1 {
-      position: absolute; width: 500px; height: 500px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(27,171,83,0.12) 0%, transparent 70%);
-      top: -100px; left: -100px; pointer-events: none;
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(27, 171, 83, 0.12) 0%, transparent 70%);
+      top: -100px;
+      left: -100px;
+      pointer-events: none;
       animation: drift1 12s ease-in-out infinite alternate;
     }
+
     .blob2 {
-      position: absolute; width: 400px; height: 400px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(123,97,255,0.14) 0%, transparent 70%);
-      top: 200px; right: -50px; pointer-events: none;
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(123, 97, 255, 0.14) 0%, transparent 70%);
+      top: 200px;
+      right: -50px;
+      pointer-events: none;
       animation: drift2 15s ease-in-out infinite alternate;
     }
-    @keyframes drift1 { from { transform: translate(0,0); } to { transform: translate(60px, 80px); } }
-    @keyframes drift2 { from { transform: translate(0,0); } to { transform: translate(-40px, 60px); } }
 
-    /* ── Accent line ── */
-    .accent-line {
-      display: inline-block; width: 48px; height: 3px;
-      background: var(--accent); border-radius: 2px; vertical-align: middle;
+    @keyframes drift1 {
+      from {
+        transform: translate(0, 0);
+      }
+
+      to {
+        transform: translate(60px, 80px);
+      }
     }
 
-    /* ── Hero heading ── */
+    @keyframes drift2 {
+      from {
+        transform: translate(0, 0);
+      }
+
+      to {
+        transform: translate(-40px, 60px);
+      }
+    }
+
+    .accent-line {
+      display: inline-block;
+      width: 48px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 2px;
+      vertical-align: middle;
+    }
+
     .hero-title {
       font-family: 'DM Sans', sans-serif;
       font-size: clamp(2rem, 10vw, 6rem);
@@ -198,6 +249,7 @@
       letter-spacing: -0.02em;
       word-break: break-word;
     }
+
     .hero-title .highlight {
       background: linear-gradient(135deg, #1bab53 0%, #00c8ff 100%);
       -webkit-background-clip: text;
@@ -205,110 +257,163 @@
       background-clip: text;
     }
 
-    /* ── Navbar ── */
     .navbar-custom {
       position: fixed;
-      top: 0; left: 0; right: 0;
+      top: 0;
+      left: 0;
+      right: 0;
       z-index: 100;
-      background: rgba(4,8,16,0.55);
+      background: rgba(4, 8, 16, 0.55);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(27,171,83,0.08);
+      border-bottom: 1px solid rgba(27, 171, 83, 0.08);
       transition: background 0.4s ease;
     }
+
     .navbar-custom:hover {
-      background: rgba(4,8,16,0.88);
+      background: rgba(4, 8, 16, 0.88);
     }
+
     .navbar-inner {
       max-width: 1600px;
       margin: 0 auto;
     }
 
-    /* ── Service cards ── */
     .service-card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(27,171,83,0.1);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(27, 171, 83, 0.1);
       border-radius: 16px;
-      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-      position: relative; overflow: hidden;
+      transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
     }
+
     .service-card::before {
       content: '';
-      position: absolute; inset: 0; border-radius: 16px;
-      background: linear-gradient(135deg, rgba(27,171,83,0.05), transparent);
-      opacity: 0; transition: opacity 0.3s;
+      position: absolute;
+      inset: 0;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(27, 171, 83, 0.05), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
     }
-    .service-card:hover { transform: translateY(-6px); border-color: rgba(27,171,83,0.4); box-shadow: 0 20px 50px rgba(27,171,83,0.08); }
-    .service-card:hover::before { opacity: 1; }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(27, 171, 83, 0.4);
+      box-shadow: 0 20px 50px rgba(27, 171, 83, 0.08);
+    }
+
+    .service-card:hover::before {
+      opacity: 1;
+    }
 
     .service-icon {
-      width: 56px; height: 56px;
-      background: rgba(27,171,83,0.1);
-      border: 1px solid rgba(27,171,83,0.2);
+      width: 56px;
+      height: 56px;
+      background: rgba(27, 171, 83, 0.1);
+      border: 1px solid rgba(27, 171, 83, 0.2);
       border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-size: 1.6rem;
     }
 
-
-    /* ── Stack badge ── */
     .stack-badge {
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.72rem;
       padding: 4px 12px;
-      background: rgba(27,171,83,0.06);
-      border: 1px solid rgba(27,171,83,0.2);
+      background: rgba(27, 171, 83, 0.06);
+      border: 1px solid rgba(27, 171, 83, 0.2);
       border-radius: 999px;
       color: var(--accent);
       transition: background 0.2s;
     }
-    .stack-badge:hover { background: rgba(27,171,83,0.15); }
 
-    /* ── Step number ── */
+    .stack-badge:hover {
+      background: rgba(27, 171, 83, 0.15);
+    }
+
     .step-num {
       font-family: 'JetBrains Mono', monospace;
       font-size: 3.5rem;
       font-weight: 700;
-      color: rgba(27,171,83,0.15);
+      color: rgba(27, 171, 83, 0.15);
       line-height: 1;
     }
 
-    /* ── CTA section ── */
     .cta-section {
-      background: linear-gradient(135deg, rgba(27,171,83,0.06), rgba(123,97,255,0.06));
-      border: 1px solid rgba(27,171,83,0.15);
+      background: linear-gradient(135deg, rgba(27, 171, 83, 0.06), rgba(123, 97, 255, 0.06));
+      border: 1px solid rgba(27, 171, 83, 0.15);
       border-radius: 24px;
     }
 
-    /* ── Stat card ── */
     .stat-card {
-      border-right: 1px solid rgba(27,171,83,0.1);
+      border-right: 1px solid rgba(27, 171, 83, 0.1);
     }
-    .stat-card:last-child { border-right: none; }
 
-    /* ── Scroll reveal ── */
-    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .stat-card:last-child {
+      border-right: none;
+    }
 
-    /* ── Ticker ── */
-    .ticker-wrap { overflow: hidden; white-space: nowrap; }
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .ticker-wrap {
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
     .ticker {
       display: inline-block;
       animation: ticker 22s linear infinite;
     }
-    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-    /* ── Button pulse ── */
+    @keyframes ticker {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
     .btn-glow {
       background: #189a4b;
       color: #fff;
       font-weight: 700;
-      box-shadow: 0 0 0 0 rgba(24,154,75,0.4);
+      box-shadow: 0 0 0 0 rgba(24, 154, 75, 0.4);
       animation: pulse-glow 3s ease-in-out infinite;
     }
+
     @keyframes pulse-glow {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(24,154,75,0.0); }
-      50% { box-shadow: 0 0 24px 6px rgba(24,154,75,0.25); }
+      0%,
+      100% {
+        box-shadow: 0 0 0 0 rgba(24, 154, 75, 0);
+      }
+
+      50% {
+        box-shadow: 0 0 24px 6px rgba(24, 154, 75, 0.25);
+      }
+    }
+
+    [x-cloak] {
+      display: none !important;
     }
   </style>
 
@@ -319,517 +424,645 @@
           colors: {
             accent: '#1bab53',
             accent2: '#7b61ff',
-          }
-        }
+          },
+        },
+      },
+    };
+  </script>
+
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+
+<body
+  class="grid-bg"
+  x-data="{
+    menuOpen: false,
+    showContactForm: false,
+    formData: { name: '', email: '', message: '' },
+    submitting: false,
+    status: '',
+    error: '',
+    async submitContact() {
+      const SCRIPT_URL = '/api/contact';
+      this.error = '';
+      this.status = '';
+      this.submitting = true;
+
+      try {
+        const body = new URLSearchParams(this.formData).toString();
+
+        await fetch(SCRIPT_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+          },
+          body,
+        });
+
+        this.formData = { name: '', email: '', message: '' };
+        this.status = 'Message sent. Thank you!';
+      } catch (err) {
+        console.error(err);
+        this.formData = { name: '', email: '', message: '' };
+        this.status = 'Message sent. Thank you!';
+      } finally {
+        this.submitting = false;
       }
     }
-  </script>
-  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  }"
+  x-init="
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
+    });
 
-  <style>
-    [x-cloak] { display: none !important; }
-    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-  </style>
-</head>
-<body class="grid-bg" x-data="{ menuOpen: false, showContactForm: false, formData: { name: '', email: '', message: '' }, submitting: false, status: '', error: '', async submitContact() { const SCRIPT_URL = '/api/contact'; this.error = ''; this.status = ''; this.submitting = true; try { const body = new URLSearchParams(this.formData).toString(); await fetch(SCRIPT_URL, { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' }, body }); this.formData = { name: '', email: '', message: '' }; this.status = 'Message sent. Thank you!'; } catch (err) { console.error(err); this.formData = { name: '', email: '', message: '' }; this.status = 'Message sent. Thank you!'; } finally { this.submitting = false; } } }" x-init="
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-">
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  "
+>
 
-<!-- ═══════════════════════════════ NAVBAR ═══════════════════════════════ -->
-<div class="navbar-custom px-6 lg:px-8 py-4">
-  <div class="navbar-inner flex items-center justify-between">
-    <a href="/" class="text-xl font-bold tracking-tight flex items-center gap-2"></a>
-      <img src="https://datacloudhero.com/img/logo.svg" alt="datacloudhero" class="h-8 w-auto" />
-    </a>
+  <!-- NAVBAR -->
+  <div class="navbar-custom px-6 lg:px-8 py-4">
+    <div class="navbar-inner flex items-center justify-between">
+      <a href="/" class="text-xl font-bold tracking-tight flex items-center gap-2">
+        <img src="https://datacloudhero.com/img/logo.svg" alt="datacloudhero" class="h-8 w-auto" />
+      </a>
 
-    <!-- Desktop menu -->
-    <div class="hidden md:flex items-center gap-8">
-      <a href="#services" class="mono text-sm text-slate-400 hover:text-accent transition-colors">Services</a>
-      <a href="#stack" class="mono text-sm text-slate-400 hover:text-accent transition-colors">Tech Stack</a>
-      <a href="#process" class="mono text-sm text-slate-400 hover:text-accent transition-colors">Process</a>
-      <a href="#contact" class="mono text-sm text-slate-400 hover:text-accent transition-colors">Contact</a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#services" class="mono text-sm text-slate-400 hover:text-accent transition-colors">Services</a>
+        <a href="#stack" class="mono text-sm text-slate-400 hover:text-accent transition-colors">Tech Stack</a>
+        <a href="#process" class="mono text-sm text-slate-400 hover:text-accent transition-colors">Process</a>
+        <a href="#contact" class="mono text-sm text-slate-400 hover:text-accent transition-colors">Contact</a>
+        <a href="https://blog.datacloudhero.com" class="mono text-sm text-slate-400 hover:text-accent transition-colors">Blog</a>
+        <a href="#contact" class="btn btn-sm btn-outline border-accent/40 text-accent hover:bg-accent hover:text-white hover:border-accent font-semibold mono">
+          Get in Touch
+        </a>
+      </div>
+
+      <button
+        class="md:hidden text-slate-400 hover:text-accent transition-colors"
+        type="button"
+        @click="menuOpen = !menuOpen"
+        :aria-expanded="menuOpen"
+        aria-label="Toggle menu"
+      >
+        <svg x-show="!menuOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+
+        <svg x-show="menuOpen" x-cloak xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+
+    <div
+      x-show="menuOpen"
+      x-transition:enter="transition ease-out duration-200"
+      x-transition:enter-start="opacity-0 -translate-y-2"
+      x-transition:enter-end="opacity-100 translate-y-0"
+      x-transition:leave="transition ease-in duration-150"
+      x-transition:leave-start="opacity-100 translate-y-0"
+      x-transition:leave-end="opacity-0 -translate-y-2"
+      class="navbar-inner md:hidden mt-4 flex flex-col gap-4 border-t border-white/5 pt-4 pb-2"
+      x-cloak
+    >
+      <a href="#services" @click="menuOpen=false" class="mono text-sm text-slate-400 hover:text-accent transition-colors">Services</a>
+      <a href="#stack" @click="menuOpen=false" class="mono text-sm text-slate-400 hover:text-accent transition-colors">Tech Stack</a>
+      <a href="#process" @click="menuOpen=false" class="mono text-sm text-slate-400 hover:text-accent transition-colors">Process</a>
+      <a href="#contact" @click="menuOpen=false" class="mono text-sm text-slate-400 hover:text-accent transition-colors">Contact</a>
       <a href="https://blog.datacloudhero.com" class="mono text-sm text-slate-400 hover:text-accent transition-colors">Blog</a>
-      <a href="#contact" class="btn btn-sm btn-outline border-accent/40 text-accent hover:bg-accent hover:text-white hover:border-accent font-semibold mono">
+      <a href="#contact" @click="menuOpen=false" class="btn btn-sm btn-outline border-accent/40 text-accent hover:bg-accent hover:text-white w-fit font-semibold mono">
         Get in Touch
       </a>
     </div>
-
-    <!-- Burger button (mobile) -->
-    <button class="md:hidden text-slate-400 hover:text-accent transition-colors"
-      @click="menuOpen = !menuOpen"
-      :aria-expanded="menuOpen">
-      <svg x-show="!menuOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-      </svg>
-      <svg x-show="menuOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-      </svg>
-    </button>
   </div>
 
-  <!-- Mobile dropdown -->
-  <div x-show="menuOpen"
-    x-transition:enter="transition ease-out duration-200"
-    x-transition:enter-start="opacity-0 -translate-y-2"
-    x-transition:enter-end="opacity-100 translate-y-0"
-    x-transition:leave="transition ease-in duration-150"
-    x-transition:leave-start="opacity-100 translate-y-0"
-    x-transition:leave-end="opacity-0 -translate-y-2"
-    class="navbar-inner md:hidden mt-4 flex flex-col gap-4 border-t border-white/5 pt-4 pb-2"
-    x-cloak>
-    <a href="#services" @click="menuOpen=false" class="mono text-sm text-slate-400 hover:text-accent transition-colors">Services</a>
-    <a href="#stack" @click="menuOpen=false" class="mono text-sm text-slate-400 hover:text-accent transition-colors">Tech Stack</a>
-    <a href="#process" @click="menuOpen=false" class="mono text-sm text-slate-400 hover:text-accent transition-colors">Process</a>
-    <a href="#contact" @click="menuOpen=false" class="mono text-sm text-slate-400 hover:text-accent transition-colors">Contact</a>
-    <a href="https://blog.datacloudhero.com" class="mono text-sm text-slate-400 hover:text-accent transition-colors">Blog</a>
-    <a href="#contact" @click="menuOpen=false" class="btn btn-sm btn-outline border-accent/40 text-accent hover:bg-accent hover:text-white w-fit font-semibold mono">
-      Get in Touch
-    </a>
-  </div>
-</div>
+  <div class="page-wrapper" style="padding-top: 72px;">
+    <!-- HERO -->
+    <section class="relative min-h-[92vh] flex items-center px-6 lg:px-16 pt-20 pb-16 overflow-hidden">
+      <div class="blob1"></div>
+      <div class="blob2"></div>
 
-<div class="page-wrapper" style="padding-top: 72px;">
-<!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
-<section class="relative min-h-[92vh] flex items-center px-6 lg:px-16 pt-20 pb-16 overflow-hidden">
-  <div class="blob1"></div>
-  <div class="blob2"></div>
-
-  <div class="relative z-10 max-w-5xl">
-    <div class="mono text-accent text-sm mb-6 flex items-center gap-3">
-      <span class="accent-line"></span>
-      Data &amp; AI Engineering Services
-    </div>
-
-    <h1 class="hero-title text-white mb-8">
-      Reliable <span class="highlight">Data and AI </span> platforms on Google Cloud
-    </h1>
-
-    <p class="text-slate-400 text-lg max-w-xl mb-10 leading-relaxed">
-      We design and deploy data pipelines, BI reports and AI solutions
-      that scale with your business.
-    </p>
-
-    <div class="flex flex-wrap gap-4">
-      <a href="#contact" class="btn btn-glow btn-lg rounded-xl px-8 font-bold text-base">
-        Request a Platform Review →
-      </a>
-      <a href="#services" class="btn btn-lg btn-ghost border border-white/10 rounded-xl px-8 text-base hover:border-accent/30">
-        See Advisory Areas
-      </a>
-    </div>
-
-    <!-- Stats bar -->
-    <div class="mt-16 grid grid-cols-3 max-w-xl gap-0 border border-white/8 rounded-2xl overflow-hidden">
-      <div class="stat-card p-5 text-center">
-        <div class="text-2xl font-bold text-accent">50+</div>
-        <div class="mono text-xs text-slate-500 mt-1">projects</div>
-      </div>
-      <div class="stat-card p-5 text-center">
-        <div class="text-2xl font-bold text-accent">×10</div>
-        <div class="mono text-xs text-slate-500 mt-1">pipeline speedup</div>
-      </div>
-      <div class="p-5 text-center">
-        <div class="text-2xl font-bold text-accent">99.9%</div>
-        <div class="mono text-xs text-slate-500 mt-1">system uptime</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Floating code snippet -->
-  <div class="absolute right-8 top-1/2 -translate-y-1/2 hidden xl:block opacity-50">
-    <div class="mono text-xs text-slate-500 leading-7 border border-white/5 rounded-xl p-6 bg-white/2">
-      <span class="text-slate-600">with</span> <span class="text-purple-400">beam</span>.<span class="text-accent">Pipeline</span>() <span class="text-slate-600">as</span> <span class="text-accent">p</span>:<br/>
-      &nbsp;&nbsp;(<br/>
-      &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-accent">p</span><br/>
-      &nbsp;&nbsp;&nbsp;&nbsp;| <span class="text-accent">"Read"</span> >> <span class="text-purple-400">ReadFromBigQuery</span>(<br/>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;query=<span class="text-yellow-400">"SELECT * FROM events"</span>,<br/>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;use_standard_sql=<span class="text-purple-400">True</span><br/>
-      &nbsp;&nbsp;&nbsp;&nbsp;)<br/>
-      &nbsp;&nbsp;&nbsp;&nbsp;| <span class="text-accent">"Transform"</span> >> <span class="text-purple-400">TransformFn</span>()<br/>
-      &nbsp;&nbsp;&nbsp;&nbsp;| <span class="text-accent">"WriteToML"</span> >> <span class="text-purple-400">WriteToVertex</span>()<br/>
-      &nbsp;&nbsp;)
-    </div>
-  </div>
-</section>
-
-
-<!-- ═══════════════════════════════ TICKER ═══════════════════════════════ -->
-<div class="border-y border-white/5 py-3 overflow-hidden">
-  <div class="ticker-wrap">
-    <span class="ticker mono text-xs text-slate-600">
-      BigQuery &nbsp;·&nbsp; Storage &nbsp;·&nbsp; ClickHouse &nbsp;·&nbsp; PostgreSQL &nbsp;·&nbsp; Apache Airflow &nbsp;·&nbsp; dbt &nbsp;·&nbsp; LangChain &nbsp;·&nbsp; LiteLLM &nbsp;·&nbsp; Django &nbsp;·&nbsp; Hugging Face &nbsp;·&nbsp; Gemini API &nbsp;·&nbsp; OpenAI API &nbsp;·&nbsp; Terraform &nbsp;·&nbsp; Docker &nbsp;·&nbsp; GitHub Actions &nbsp;·&nbsp; GCP &nbsp;·&nbsp; Qlik Sense &nbsp;·&nbsp;
-      BigQuery &nbsp;·&nbsp; Storage &nbsp;·&nbsp; ClickHouse &nbsp;·&nbsp; PostgreSQL &nbsp;·&nbsp; Apache Airflow &nbsp;·&nbsp; dbt &nbsp;·&nbsp; LangChain &nbsp;·&nbsp; LiteLLM &nbsp;·&nbsp; Django &nbsp;·&nbsp; Hugging Face &nbsp;·&nbsp; Gemini API &nbsp;·&nbsp; OpenAI API &nbsp;·&nbsp; Terraform &nbsp;·&nbsp; Docker &nbsp;·&nbsp; GitHub Actions &nbsp;·&nbsp; GCP &nbsp;·&nbsp; Qlik Sense &nbsp;·&nbsp;
-    </span>
-  </div>
-</div>
-
-
-<!-- ═══════════════════════════════ SERVICES ═══════════════════════════════ -->
-<section id="services" class="px-6 lg:px-16 py-28">
-  <div class="max-w-6xl mx-auto">
-    <div class="reveal mb-16">
-      <div class="mono text-accent text-sm mb-4 flex items-center gap-3">
-        <span class="accent-line"></span> 01 / Services
-      </div>
-      <h2 class="text-4xl font-bold text-white mb-4">What We Build</h2>
-      <p class="text-slate-400 max-w-xl">
-        Full-spectrum engineering services — from raw data to production-ready AI products.
-      </p>
-    </div>
-
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-      <!-- Card 1 -->
-      <div class="service-card p-7 reveal">
-        <div class="service-icon mb-5">
-          <i data-lucide="database"></i>
+      <div class="relative z-10 max-w-5xl">
+        <div class="mono text-accent text-sm mb-6 flex items-center gap-3">
+          <span class="accent-line"></span>
+          Data &amp; AI Engineering Services
         </div>
-        <h3 class="text-lg font-bold text-white mb-3">Data Engineering</h3>
-        <p class="text-slate-400 text-sm leading-relaxed mb-5">
-          Designing ETL/ELT pipelines, Data Lake and Data Warehouse architectures.
-          Reliable data delivery at any scale.
+
+        <h1 class="hero-title text-white mb-8">
+          Reliable <span class="highlight">Data and AI </span> platforms on Google Cloud
+        </h1>
+
+        <p class="text-slate-400 text-lg max-w-xl mb-10 leading-relaxed">
+          We design and deploy data pipelines, BI reports and AI solutions
+          that scale with your business.
         </p>
-        <div class="flex flex-wrap gap-2">
-          <span class="stack-badge">Pipelines</span>
-          <span class="stack-badge">Architecture</span>
-          <span class="stack-badge">Automation</span>
-          <span class="stack-badge">Data Quality</span>
+
+        <div class="flex flex-wrap gap-4">
+          <a href="#contact" class="btn btn-glow btn-lg rounded-xl px-8 font-bold text-base">
+            Request a Platform Review →
+          </a>
+
+          <a href="#services" class="btn btn-lg btn-ghost border border-white/10 rounded-xl px-8 text-base hover:border-accent/30">
+            See Advisory Areas
+          </a>
         </div>
-      </div>
 
-      <!-- Card 2 -->
-      <div class="service-card p-7 reveal" style="transition-delay:0.1s;">
-        <div class="service-icon mb-5" style="background:rgba(123,97,255,0.1);border-color:rgba(123,97,255,0.2)"> 
-          <i data-lucide="brain-circuit"></i>
-        </div>
-        <h3 class="text-lg font-bold text-white mb-3">GenAI</h3>
-        <p class="text-slate-400 text-sm leading-relaxed mb-5">
-          Building and deploying LLM apps, RAG systems and AI agents
-          into production environments.
-        </p>
-        <div class="flex flex-wrap gap-2">
-          <span class="stack-badge">LLM Apps</span>
-          <span class="stack-badge">RAG</span>
-          <span class="stack-badge">AI Agents</span>
-          <span class="stack-badge">MCP Servers</span>
-        </div>
-      </div>
+        <div class="mt-16 grid grid-cols-3 max-w-xl gap-0 border border-white/8 rounded-2xl overflow-hidden">
+          <div class="stat-card p-5 text-center">
+            <div class="text-2xl font-bold text-accent">50+</div>
+            <div class="mono text-xs text-slate-500 mt-1">projects</div>
+          </div>
 
-      <!-- Card 3 -->
-      <div class="service-card p-7 reveal" style="transition-delay:0.2s">
-        <div class="service-icon mb-5" style="background:rgba(0,200,255,0.1);border-color:rgba(0,200,255,0.2)">
-            <i data-lucide="cloud-cog"></i>
-        </div>
-        <h3 class="text-lg font-bold text-white mb-3">Cloud Data Platform</h3>
-        <p class="text-slate-400 text-sm leading-relaxed mb-5">
-          Building modern cloud data platforms on Google Cloud Platform
-          from scratch or migrating existing ones.
-        </p>
-        <div class="flex flex-wrap gap-2">
-          <span class="stack-badge">Cloud Setup</span>
-          <span class="stack-badge">Migration</span>
-          <span class="stack-badge">Infrastructure</span>
-          <span class="stack-badge">Optimization</span>          
-        </div>
-      </div>
+          <div class="stat-card p-5 text-center">
+            <div class="text-2xl font-bold text-accent">×10</div>
+            <div class="mono text-xs text-slate-500 mt-1">pipeline speedup</div>
+          </div>
 
-      <!-- Card 4 -->
-      <div class="service-card p-7 reveal" style="transition-delay:0.05s">
-        <div class="service-icon mb-5" style="background:rgba(255,170,0,0.1);border-color:rgba(255,170,0,0.2)">
-            <i data-lucide="chart-column-increasing"></i>
-        </div>
-        <h3 class="text-lg font-bold text-white mb-3">Analytics & BI Engineering</h3>
-        <p class="text-slate-400 text-sm leading-relaxed mb-5">
-          Semantic layer, data modeling, metrics and dashboards.
-          Your data - clear to every member of the team.
-        </p>
-        <div class="flex flex-wrap gap-2">
-          <span class="stack-badge">Dashboards</span>
-          <span class="stack-badge">Metrics</span>
-          <span class="stack-badge">Semantic Layer</span>
-          <span class="stack-badge">Self-Service BI</span>
-        </div>
-      </div>
-
-      <!-- Card 5 -->
-      <div class="service-card p-7 reveal" style="transition-delay:0.15s">
-        <div class="service-icon mb-5" style="background:rgba(27,171,83,0.1);border-color:rgba(27,171,83,0.2)">
-            <i data-lucide="compass"></i>
-        </div>
-        <h3 class="text-lg font-bold text-white mb-3">Data Team Advisory</h3>
-        <p class="text-slate-400 text-sm leading-relaxed mb-5">
-          Guidance on how data teams can be structured, scaled and aligned with business needs. Covering roles, collaboration patterns, ownership models and data maturity best practices.
-        </p>
-        <div class="flex flex-wrap gap-2">
-          <span class="stack-badge">Strategy</span>
-          <span class="stack-badge">Team Structure</span>
-          <span class="stack-badge">Ownership Models</span>
-          <span class="stack-badge">Maturity Assessment</span>
-        </div>
-      </div>
-
-      <!-- Card 6 -->
-      <div class="service-card p-7 reveal" style="transition-delay:0.25s">
-        <div class="service-icon mb-5" style="background:rgba(123,97,255,0.1);border-color:rgba(123,97,255,0.2)">
-            <i data-lucide="presentation"></i>
-        </div>
-        <h3 class="text-lg font-bold text-white mb-3">Team Training</h3>
-        <p class="text-slate-400 text-sm leading-relaxed mb-5">
-          Practical workshops and knowledge-sharing sessions for data, analytics and AI teams. Focused on modern data engineering, cloud platforms, BI and AI workflows.
-        </p>
-        <div class="flex flex-wrap gap-2">
-          <span class="stack-badge">Workshops</span>
-          <span class="stack-badge">Trainings</span>
-          <span class="stack-badge">Knowledge Sharing</span>
-          <span class="stack-badge">Hands-on Sessions</span>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-<!-- ═══════════════════════════════ STACK ═══════════════════════════════ -->
-<section id="stack" class="px-6 lg:px-16 py-24 border-y border-white/5">
-  <div class="max-w-6xl mx-auto">
-    <div class="reveal mb-12">
-      <div class="mono text-accent text-sm mb-4 flex items-center gap-3">
-        <span class="accent-line"></span> 02 / Tech Stack
-      </div>
-      <h2 class="text-4xl font-bold text-white mb-4">Our Stack</h2>
-    </div>
-
-    <div class="grid grid-cols-2 md:grid-cols-5 gap-6 reveal">
-      <div>
-        <div class="mono text-xs text-slate-600 mb-3 uppercase tracking-widest">Storage</div>
-        <div class="flex flex-col gap-2">
-          <span class="stack-badge w-fit">BigQuery</span>
-          <span class="stack-badge w-fit">Storage</span>
-          <span class="stack-badge w-fit">ClickHouse</span>
-          <span class="stack-badge w-fit">PostgreSQL</span>
-        </div>
-      </div>
-      <div>
-        <div class="mono text-xs text-slate-600 mb-3 uppercase tracking-widest">Orchestration</div>
-        <div class="flex flex-col gap-2">
-          <span class="stack-badge w-fit">Apache Airflow</span>
-          <span class="stack-badge w-fit">dbt</span>
-        </div>
-      </div>
-      <div>
-        <div class="mono text-xs text-slate-600 mb-3 uppercase tracking-widest">Gen AI </div>
-        <div class="flex flex-col gap-2">
-          <span class="stack-badge w-fit">LangChain</span>
-          <span class="stack-badge w-fit">LiteLLM</span>
-          <span class="stack-badge w-fit">Django</span>
-          <span class="stack-badge w-fit">Hugging Face</span>
-          <span class="stack-badge w-fit">Gemini API</span>
-          <span class="stack-badge w-fit">OpenAI API</span>
-        </div>
-      </div>
-      <div>
-        <div class="mono text-xs text-slate-600 mb-3 uppercase tracking-widest">Infrastructure</div>
-        <div class="flex flex-col gap-2">
-          <span class="stack-badge w-fit">Terraform</span>
-          <span class="stack-badge w-fit">Docker</span>
-          <span class="stack-badge w-fit">GitHub Actions</span>
-          <span class="stack-badge w-fit">Google Cloud Platform</span>
-        </div>
-      </div>
-      <div>
-        <div class="mono text-xs text-slate-600 mb-3 uppercase tracking-widest">BI</div>
-        <div class="flex flex-col gap-2">
-          <span class="stack-badge w-fit">Qlik Sense</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ═══════════════════════════════ PROCESS ═══════════════════════════════ -->
-<section id="process" class="px-6 lg:px-16 py-28">
-  <div class="max-w-6xl mx-auto">
-    <div class="reveal mb-16">
-      <div class="mono text-accent text-sm mb-4 flex items-center gap-3">
-        <span class="accent-line"></span> 03 / Process
-      </div>
-      <h2 class="text-4xl font-bold text-white mb-4">How We Work</h2>
-      <p class="text-slate-400 max-w-xl">
-        Small, scoped engagements with concrete technical output: findings, recommendations, release flow, checklists, and implementation guidance.
-      </p>
-    </div>
-
-     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-      <div class="reveal">
-        <div class="step-num">01</div>
-        <h3 class="text-white font-bold text-lg mt-2 mb-3">Review</h3>
-        <p class="text-slate-400 text-sm leading-relaxed">
-          Architecture, pipelines, cloud resources, deployment process, and current team pain points.
-        </p>
-      </div>
-      <div class="reveal" style="transition-delay:0.1s">
-        <div class="step-num">02</div>
-        <h3 class="text-white font-bold text-lg mt-2 mb-3">Diagnosis</h3>
-        <p class="text-slate-400 text-sm leading-relaxed">
-          Identify reliability gaps, release risks, performance bottlenecks, and avoidable cloud costs.
-        </p>
-      </div>
-      <div class="reveal" style="transition-delay:0.2s">
-        <div class="step-num">03</div>
-        <h3 class="text-white font-bold text-lg mt-2 mb-3">Roadmap</h3>
-        <p class="text-slate-400 text-sm leading-relaxed">
-          Prioritized actions, target deployment flow, platform recommendations, and quick wins.
-        </p>
-      </div>
-      <div class="reveal" style="transition-delay:0.3s">
-        <div class="step-num">04</div>
-        <h3 class="text-white font-bold text-lg mt-2 mb-3">Support</h3>
-        <p class="text-slate-400 text-sm leading-relaxed">
-          Async advisory, technical reviews, implementation guidance, and documentation support.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ═══════════════════════════════ CTA ═══════════════════════════════ -->
-<section id="contact" class="px-6 lg:px-16 py-24">
-  <div class="max-w-5xl mx-auto">
-    <div class="cta-section p-12 lg:p-16 text-center reveal">
-      <div class="mono text-accent text-sm mb-5">Ready to start?</div>
-      <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6">
-        Let's build<br/>something great
-      </h2>
-      <p class="text-slate-400 max-w-lg mx-auto mb-10 leading-relaxed">
-        Share your data platform challenge — pipelines, CI/CD, reliability, architecture, or cloud cost. You get a clear technical conversation, not a sales pitch.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center mb-10">
-        <button type="button" @click="showContactForm = true" class="btn btn-glow btn-lg rounded-xl px-10 font-bold">
-          Email Us ✉
-        </button>
-        <!-- <a href="https://t.me/dataforge" class="btn btn-lg btn-ghost border border-white/10 rounded-xl px-10 hover:border-accent/30">
-          Telegram
-        </a> -->
-      </div>
-      <div class="mono text-xs text-slate-600"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="bad2dfd6d6d5fadedbcedbdcd5c8dddf94dedfcc">[email&#160;protected]</a> · Selected advisory engagements · Remote across Europe</div>
-    </div>
-  </div>
-</section>
-
-<div x-show="showContactForm" x-cloak @keydown.escape.window="showContactForm = false" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70">
-  <div @click.away="showContactForm = false" class="w-full max-w-2xl rounded-[32px] border border-white/10 bg-slate-950/95 p-6 shadow-2xl backdrop-blur-xl">
-    <div class="flex items-start justify-between gap-4 mb-6">
-      <div>
-        <div class="mono text-accent text-sm mb-2">Contact</div>
-        <h2 class="text-3xl font-bold text-white">Email Us</h2>
-      </div>
-      <button type="button" @click="showContactForm = false" class="text-slate-400 hover:text-white text-2xl leading-none">×</button>
-    </div>
-    <form @submit.prevent="submitContact" class="space-y-5">
-      <div class="grid gap-4">
-        <label class="block text-sm font-semibold text-slate-200">Name
-          <input name="name" x-model="formData.name" type="text" required class="mt-2 w-full rounded-2xl border border-white/10 bg-slate-900 px-4 py-3 text-sm text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20" />
-        </label>
-        <label class="block text-sm font-semibold text-slate-200">Email
-          <input name="email" x-model="formData.email" type="email" required class="mt-2 w-full rounded-2xl border border-white/10 bg-slate-900 px-4 py-3 text-sm text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20" />
-        </label>
-        <label class="block text-sm font-semibold text-slate-200">Message
-          <textarea name="message" x-model="formData.message" required rows="6" class="mt-2 w-full rounded-3xl border border-white/10 bg-slate-900 px-4 py-3 text-sm text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"></textarea>
-        </label>
-      </div>
-
-      <div class="flex flex-col gap-3">
-        <button type="submit" :disabled="submitting" class="btn btn-glow btn-lg rounded-2xl px-6 font-bold disabled:opacity-60">
-          <span x-show="!submitting">Send</span>
-          <span x-show="submitting">Sending…</span>
-        </button>
-        <div class="text-sm">
-          <p x-text="status" class="text-emerald-400"></p>
-          <p x-text="error" class="text-rose-400"></p>
-        </div>
-      </div>
-    </form>
-  </div>
-</div>
-
-
-<!-- ═══════════════════════════════ FAQ ═══════════════════════════════ -->
-<section class="px-6 lg:px-16 py-24 border-t border-white/5">
-  <div class="max-w-3xl mx-auto">
-    <div class="reveal mb-12">
-      <div class="mono text-accent text-sm mb-4 flex items-center gap-3">
-        <span class="accent-line"></span> 04 / FAQ
-      </div>
-      <h2 class="text-4xl font-bold text-white mb-4">Frequently Asked Questions</h2>
-    </div>
-
-    <div class="flex flex-col gap-3 reveal" x-data="{ open: null }">
-
-      <template x-for="(item, i) in [
-        { q: 'Do you take full-time delivery projects?', a: 'I focus on selected, well-scoped advisory and engineering engagements with clear milestones and technical output.' },
-        { q: 'Do you work with Azure or Google Cloud or AWS?', a: 'The main focus is Google Cloud Data platforms: pipelines, warehouse and lake architecture, CI/CD, reliability, and cost.' },
-        { q: 'What does a platform review include?', a: 'Architecture review, pipeline and release process assessment, monitoring gaps, cost and performance risks, and a practical improvement roadmap.' },
-        { q: 'Can you help without replacing our stack?', a: 'Yes. The goal is usually to stabilize and improve existing systems, not to rebuild everything from scratch.' },
-        { q: 'Do you work remotely?', a: 'Yes. Remote-first across Europe, with async communication and scheduled review calls.' }
-      ]" :key="i">
-        <div class="border border-white/8 rounded-xl overflow-hidden"
-          :class="open === i ? 'border-accent/25' : ''">
-          <button class="w-full flex items-center justify-between px-6 py-5 text-left hover:bg-white/2 transition-colors"
-            @click="open = open === i ? null : i">
-            <span class="font-semibold text-white text-sm" x-text="item.q"></span>
-            <span class="text-accent ml-4 flex-shrink-0 transition-transform duration-300"
-              :class="open === i ? 'rotate-45' : ''">＋</span>
-          </button>
-          <div x-show="open === i"
-            x-transition:enter="transition ease-out duration-200"
-            x-transition:enter-start="opacity-0 -translate-y-1"
-            x-transition:enter-end="opacity-100 translate-y-0"
-            x-cloak>
-            <p class="px-6 pb-5 text-slate-400 text-sm leading-relaxed" x-text="item.a"></p>
+          <div class="p-5 text-center">
+            <div class="text-2xl font-bold text-accent">99.9%</div>
+            <div class="mono text-xs text-slate-500 mt-1">system uptime</div>
           </div>
         </div>
-      </template>
-
-    </div>
-  </div>
-</section>
-
-
-<!-- ═══════════════════════════════ FOOTER ═══════════════════════════════ -->
-<footer class="border-t border-white/5 px-6 lg:px-16 py-10">
-  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-    <div class="flex items-center gap-2">
-      <img src="https://datacloudhero.com/img/logo.svg" alt="datacloudhero" class="h-7 w-auto" />
-    </div>
-    <div class="mono text-xs text-slate-600">© 2025 datacloudhero.com. Data & AI Engineering.</div>
-      <div class="flex gap-6">
-        <a href="#services" class="mono text-xs text-slate-500 hover:text-accent transition-colors">Services</a>
-        <a href="#stack" class="mono text-xs text-slate-500 hover:text-accent transition-colors">Stack</a>
-        <a href="#contact" class="mono text-xs text-slate-500 hover:text-accent transition-colors">Contact</a>
-        <a href="https://blog.datacloudhero.com" class="mono text-xs text-slate-500 hover:text-accent transition-colors">Blog</a>
-
-        <button
-          type="button"
-          data-cc="show-preferencesModal"
-          class="mono text-xs text-slate-500 hover:text-accent transition-colors bg-transparent border-0 p-0 cursor-pointer"
-        >
-          Cookie settings
-        </button>
       </div>
+
+      <div class="absolute right-8 top-1/2 -translate-y-1/2 hidden xl:block opacity-50">
+        <div class="mono text-xs text-slate-500 leading-7 border border-white/5 rounded-xl p-6 bg-white/2">
+          <span class="text-slate-600">with</span> <span class="text-purple-400">beam</span>.<span class="text-accent">Pipeline</span>() <span class="text-slate-600">as</span> <span class="text-accent">p</span>:<br/>
+          &nbsp;&nbsp;(<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-accent">p</span><br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;| <span class="text-accent">"Read"</span> >> <span class="text-purple-400">ReadFromBigQuery</span>(<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;query=<span class="text-yellow-400">"SELECT * FROM events"</span>,<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;use_standard_sql=<span class="text-purple-400">True</span><br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;)<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;| <span class="text-accent">"Transform"</span> >> <span class="text-purple-400">TransformFn</span>()<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;| <span class="text-accent">"WriteToML"</span> >> <span class="text-purple-400">WriteToVertex</span>()<br/>
+          &nbsp;&nbsp;)
+        </div>
+      </div>
+    </section>
+
+    <!-- TICKER -->
+    <div class="border-y border-white/5 py-3 overflow-hidden">
+      <div class="ticker-wrap">
+        <span class="ticker mono text-xs text-slate-600">
+          BigQuery &nbsp;·&nbsp; Storage &nbsp;·&nbsp; ClickHouse &nbsp;·&nbsp; PostgreSQL &nbsp;·&nbsp; Apache Airflow &nbsp;·&nbsp; dbt &nbsp;·&nbsp; LangChain &nbsp;·&nbsp; LiteLLM &nbsp;·&nbsp; Django &nbsp;·&nbsp; Hugging Face &nbsp;·&nbsp; Gemini API &nbsp;·&nbsp; OpenAI API &nbsp;·&nbsp; Terraform &nbsp;·&nbsp; Docker &nbsp;·&nbsp; GitHub Actions &nbsp;·&nbsp; GCP &nbsp;·&nbsp; Qlik Sense &nbsp;·&nbsp;
+          BigQuery &nbsp;·&nbsp; Storage &nbsp;·&nbsp; ClickHouse &nbsp;·&nbsp; PostgreSQL &nbsp;·&nbsp; Apache Airflow &nbsp;·&nbsp; dbt &nbsp;·&nbsp; LangChain &nbsp;·&nbsp; LiteLLM &nbsp;·&nbsp; Django &nbsp;·&nbsp; Hugging Face &nbsp;·&nbsp; Gemini API &nbsp;·&nbsp; OpenAI API &nbsp;·&nbsp; Terraform &nbsp;·&nbsp; Docker &nbsp;·&nbsp; GitHub Actions &nbsp;·&nbsp; GCP &nbsp;·&nbsp; Qlik Sense &nbsp;·&nbsp;
+        </span>
+      </div>
+    </div>
+
+    <!-- SERVICES -->
+    <section id="services" class="px-6 lg:px-16 py-28">
+      <div class="max-w-6xl mx-auto">
+        <div class="reveal mb-16">
+          <div class="mono text-accent text-sm mb-4 flex items-center gap-3">
+            <span class="accent-line"></span>
+            01 / Services
+          </div>
+
+          <h2 class="text-4xl font-bold text-white mb-4">What We Build</h2>
+
+          <p class="text-slate-400 max-w-xl">
+            Full-spectrum engineering services — from raw data to production-ready AI products.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="service-card p-7 reveal">
+            <div class="service-icon mb-5">
+              <i data-lucide="database"></i>
+            </div>
+
+            <h3 class="text-lg font-bold text-white mb-3">Data Engineering</h3>
+
+            <p class="text-slate-400 text-sm leading-relaxed mb-5">
+              Designing ETL/ELT pipelines, Data Lake and Data Warehouse architectures.
+              Reliable data delivery at any scale.
+            </p>
+
+            <div class="flex flex-wrap gap-2">
+              <span class="stack-badge">Pipelines</span>
+              <span class="stack-badge">Architecture</span>
+              <span class="stack-badge">Automation</span>
+              <span class="stack-badge">Data Quality</span>
+            </div>
+          </div>
+
+          <div class="service-card p-7 reveal" style="transition-delay: 0.1s;">
+            <div class="service-icon mb-5" style="background: rgba(123, 97, 255, 0.1); border-color: rgba(123, 97, 255, 0.2);">
+              <i data-lucide="brain-circuit"></i>
+            </div>
+
+            <h3 class="text-lg font-bold text-white mb-3">GenAI</h3>
+
+            <p class="text-slate-400 text-sm leading-relaxed mb-5">
+              Building and deploying LLM apps, RAG systems and AI agents
+              into production environments.
+            </p>
+
+            <div class="flex flex-wrap gap-2">
+              <span class="stack-badge">LLM Apps</span>
+              <span class="stack-badge">RAG</span>
+              <span class="stack-badge">AI Agents</span>
+              <span class="stack-badge">MCP Servers</span>
+            </div>
+          </div>
+
+          <div class="service-card p-7 reveal" style="transition-delay: 0.2s;">
+            <div class="service-icon mb-5" style="background: rgba(0, 200, 255, 0.1); border-color: rgba(0, 200, 255, 0.2);">
+              <i data-lucide="cloud-cog"></i>
+            </div>
+
+            <h3 class="text-lg font-bold text-white mb-3">Cloud Data Platform</h3>
+
+            <p class="text-slate-400 text-sm leading-relaxed mb-5">
+              Building modern cloud data platforms on Google Cloud Platform
+              from scratch or migrating existing ones.
+            </p>
+
+            <div class="flex flex-wrap gap-2">
+              <span class="stack-badge">Cloud Setup</span>
+              <span class="stack-badge">Migration</span>
+              <span class="stack-badge">Infrastructure</span>
+              <span class="stack-badge">Optimization</span>
+            </div>
+          </div>
+
+          <div class="service-card p-7 reveal" style="transition-delay: 0.05s;">
+            <div class="service-icon mb-5" style="background: rgba(255, 170, 0, 0.1); border-color: rgba(255, 170, 0, 0.2);">
+              <i data-lucide="chart-column-increasing"></i>
+            </div>
+
+            <h3 class="text-lg font-bold text-white mb-3">Analytics &amp; BI Engineering</h3>
+
+            <p class="text-slate-400 text-sm leading-relaxed mb-5">
+              Semantic layer, data modeling, metrics and dashboards.
+              Your data - clear to every member of the team.
+            </p>
+
+            <div class="flex flex-wrap gap-2">
+              <span class="stack-badge">Dashboards</span>
+              <span class="stack-badge">Metrics</span>
+              <span class="stack-badge">Semantic Layer</span>
+              <span class="stack-badge">Self-Service BI</span>
+            </div>
+          </div>
+
+          <div class="service-card p-7 reveal" style="transition-delay: 0.15s;">
+            <div class="service-icon mb-5" style="background: rgba(27, 171, 83, 0.1); border-color: rgba(27, 171, 83, 0.2);">
+              <i data-lucide="compass"></i>
+            </div>
+
+            <h3 class="text-lg font-bold text-white mb-3">Data Team Advisory</h3>
+
+            <p class="text-slate-400 text-sm leading-relaxed mb-5">
+              Guidance on how data teams can be structured, scaled and aligned with business needs.
+              Covering roles, collaboration patterns, ownership models and data maturity best practices.
+            </p>
+
+            <div class="flex flex-wrap gap-2">
+              <span class="stack-badge">Strategy</span>
+              <span class="stack-badge">Team Structure</span>
+              <span class="stack-badge">Ownership Models</span>
+              <span class="stack-badge">Maturity Assessment</span>
+            </div>
+          </div>
+
+          <div class="service-card p-7 reveal" style="transition-delay: 0.25s;">
+            <div class="service-icon mb-5" style="background: rgba(123, 97, 255, 0.1); border-color: rgba(123, 97, 255, 0.2);">
+              <i data-lucide="presentation"></i>
+            </div>
+
+            <h3 class="text-lg font-bold text-white mb-3">Team Training</h3>
+
+            <p class="text-slate-400 text-sm leading-relaxed mb-5">
+              Practical workshops and knowledge-sharing sessions for data, analytics and AI teams.
+              Focused on modern data engineering, cloud platforms, BI and AI workflows.
+            </p>
+
+            <div class="flex flex-wrap gap-2">
+              <span class="stack-badge">Workshops</span>
+              <span class="stack-badge">Trainings</span>
+              <span class="stack-badge">Knowledge Sharing</span>
+              <span class="stack-badge">Hands-on Sessions</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STACK -->
+    <section id="stack" class="px-6 lg:px-16 py-24 border-y border-white/5">
+      <div class="max-w-6xl mx-auto">
+        <div class="reveal mb-12">
+          <div class="mono text-accent text-sm mb-4 flex items-center gap-3">
+            <span class="accent-line"></span>
+            02 / Tech Stack
+          </div>
+
+          <h2 class="text-4xl font-bold text-white mb-4">Our Stack</h2>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-6 reveal">
+          <div>
+            <div class="mono text-xs text-slate-600 mb-3 uppercase tracking-widest">Storage</div>
+            <div class="flex flex-col gap-2">
+              <span class="stack-badge w-fit">BigQuery</span>
+              <span class="stack-badge w-fit">Storage</span>
+              <span class="stack-badge w-fit">ClickHouse</span>
+              <span class="stack-badge w-fit">PostgreSQL</span>
+            </div>
+          </div>
+
+          <div>
+            <div class="mono text-xs text-slate-600 mb-3 uppercase tracking-widest">Orchestration</div>
+            <div class="flex flex-col gap-2">
+              <span class="stack-badge w-fit">Apache Airflow</span>
+              <span class="stack-badge w-fit">dbt</span>
+            </div>
+          </div>
+
+          <div>
+            <div class="mono text-xs text-slate-600 mb-3 uppercase tracking-widest">Gen AI</div>
+            <div class="flex flex-col gap-2">
+              <span class="stack-badge w-fit">LangChain</span>
+              <span class="stack-badge w-fit">LiteLLM</span>
+              <span class="stack-badge w-fit">Django</span>
+              <span class="stack-badge w-fit">Hugging Face</span>
+              <span class="stack-badge w-fit">Gemini API</span>
+              <span class="stack-badge w-fit">OpenAI API</span>
+            </div>
+          </div>
+
+          <div>
+            <div class="mono text-xs text-slate-600 mb-3 uppercase tracking-widest">Infrastructure</div>
+            <div class="flex flex-col gap-2">
+              <span class="stack-badge w-fit">Terraform</span>
+              <span class="stack-badge w-fit">Docker</span>
+              <span class="stack-badge w-fit">GitHub Actions</span>
+              <span class="stack-badge w-fit">Google Cloud Platform</span>
+            </div>
+          </div>
+
+          <div>
+            <div class="mono text-xs text-slate-600 mb-3 uppercase tracking-widest">BI</div>
+            <div class="flex flex-col gap-2">
+              <span class="stack-badge w-fit">Qlik Sense</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section id="process" class="px-6 lg:px-16 py-28">
+      <div class="max-w-6xl mx-auto">
+        <div class="reveal mb-16">
+          <div class="mono text-accent text-sm mb-4 flex items-center gap-3">
+            <span class="accent-line"></span>
+            03 / Process
+          </div>
+
+          <h2 class="text-4xl font-bold text-white mb-4">How We Work</h2>
+
+          <p class="text-slate-400 max-w-xl">
+            Small, scoped engagements with concrete technical output: findings, recommendations, release flow, checklists, and implementation guidance.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div class="reveal">
+            <div class="step-num">01</div>
+            <h3 class="text-white font-bold text-lg mt-2 mb-3">Review</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">
+              Architecture, pipelines, cloud resources, deployment process, and current team pain points.
+            </p>
+          </div>
+
+          <div class="reveal" style="transition-delay: 0.1s;">
+            <div class="step-num">02</div>
+            <h3 class="text-white font-bold text-lg mt-2 mb-3">Diagnosis</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">
+              Identify reliability gaps, release risks, performance bottlenecks, and avoidable cloud costs.
+            </p>
+          </div>
+
+          <div class="reveal" style="transition-delay: 0.2s;">
+            <div class="step-num">03</div>
+            <h3 class="text-white font-bold text-lg mt-2 mb-3">Roadmap</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">
+              Prioritized actions, target deployment flow, platform recommendations, and quick wins.
+            </p>
+          </div>
+
+          <div class="reveal" style="transition-delay: 0.3s;">
+            <div class="step-num">04</div>
+            <h3 class="text-white font-bold text-lg mt-2 mb-3">Support</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">
+              Async advisory, technical reviews, implementation guidance, and documentation support.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="contact" class="px-6 lg:px-16 py-24">
+      <div class="max-w-5xl mx-auto">
+        <div class="cta-section p-12 lg:p-16 text-center reveal">
+          <div class="mono text-accent text-sm mb-5">Ready to start?</div>
+
+          <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6">
+            Let's build<br/>something great
+          </h2>
+
+          <p class="text-slate-400 max-w-lg mx-auto mb-10 leading-relaxed">
+            Share your data platform challenge — pipelines, CI/CD, reliability, architecture, or cloud cost.
+            You get a clear technical conversation, not a sales pitch.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-4 justify-center mb-10">
+            <button type="button" @click="showContactForm = true" class="btn btn-glow btn-lg rounded-xl px-10 font-bold">
+              Email Us ✉
+            </button>
+          </div>
+
+          <div class="mono text-xs text-slate-600">
+            <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="bad2dfd6d6d5fadedbcedbdcd5c8dddf94dedfcc">[email&#160;protected]</a>
+            · Selected advisory engagements · Remote across Europe
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT MODAL -->
+    <div
+      x-show="showContactForm"
+      x-cloak
+      @keydown.escape.window="showContactForm = false"
+      class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70"
+    >
+      <div
+        @click.away="showContactForm = false"
+        class="w-full max-w-2xl rounded-[32px] border border-white/10 bg-slate-950/95 p-6 shadow-2xl backdrop-blur-xl"
+      >
+        <div class="flex items-start justify-between gap-4 mb-6">
+          <div>
+            <div class="mono text-accent text-sm mb-2">Contact</div>
+            <h2 class="text-3xl font-bold text-white">Email Us</h2>
+          </div>
+
+          <button type="button" @click="showContactForm = false" class="text-slate-400 hover:text-white text-2xl leading-none">
+            ×
+          </button>
+        </div>
+
+        <form @submit.prevent="submitContact" class="space-y-5">
+          <div class="grid gap-4">
+            <label class="block text-sm font-semibold text-slate-200">
+              Name
+              <input
+                name="name"
+                x-model="formData.name"
+                type="text"
+                required
+                class="mt-2 w-full rounded-2xl border border-white/10 bg-slate-900 px-4 py-3 text-sm text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
+              />
+            </label>
+
+            <label class="block text-sm font-semibold text-slate-200">
+              Email
+              <input
+                name="email"
+                x-model="formData.email"
+                type="email"
+                required
+                class="mt-2 w-full rounded-2xl border border-white/10 bg-slate-900 px-4 py-3 text-sm text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
+              />
+            </label>
+
+            <label class="block text-sm font-semibold text-slate-200">
+              Message
+              <textarea
+                name="message"
+                x-model="formData.message"
+                required
+                rows="6"
+                class="mt-2 w-full rounded-3xl border border-white/10 bg-slate-900 px-4 py-3 text-sm text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
+              ></textarea>
+            </label>
+          </div>
+
+          <div class="flex flex-col gap-3">
+            <button type="submit" :disabled="submitting" class="btn btn-glow btn-lg rounded-2xl px-6 font-bold disabled:opacity-60">
+              <span x-show="!submitting">Send</span>
+              <span x-show="submitting">Sending…</span>
+            </button>
+
+            <div class="text-sm">
+              <p x-text="status" class="text-emerald-400"></p>
+              <p x-text="error" class="text-rose-400"></p>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <section class="px-6 lg:px-16 py-24 border-t border-white/5">
+      <div class="max-w-3xl mx-auto">
+        <div class="reveal mb-12">
+          <div class="mono text-accent text-sm mb-4 flex items-center gap-3">
+            <span class="accent-line"></span>
+            04 / FAQ
+          </div>
+
+          <h2 class="text-4xl font-bold text-white mb-4">Frequently Asked Questions</h2>
+        </div>
+
+        <div class="flex flex-col gap-3 reveal" x-data="{ open: null }">
+          <template x-for="(item, i) in [
+            { q: 'Do you take full-time delivery projects?', a: 'I focus on selected, well-scoped advisory and engineering engagements with clear milestones and technical output.' },
+            { q: 'Do you work with Azure or Google Cloud or AWS?', a: 'The main focus is Google Cloud Data platforms: pipelines, warehouse and lake architecture, CI/CD, reliability, and cost.' },
+            { q: 'What does a platform review include?', a: 'Architecture review, pipeline and release process assessment, monitoring gaps, cost and performance risks, and a practical improvement roadmap.' },
+            { q: 'Can you help without replacing our stack?', a: 'Yes. The goal is usually to stabilize and improve existing systems, not to rebuild everything from scratch.' },
+            { q: 'Do you work remotely?', a: 'Yes. Remote-first across Europe, with async communication and scheduled review calls.' }
+          ]" :key="i">
+            <div
+              class="border border-white/8 rounded-xl overflow-hidden"
+              :class="open === i ? 'border-accent/25' : ''"
+            >
+              <button
+                type="button"
+                class="w-full flex items-center justify-between px-6 py-5 text-left hover:bg-white/2 transition-colors"
+                @click="open = open === i ? null : i"
+              >
+                <span class="font-semibold text-white text-sm" x-text="item.q"></span>
+                <span
+                  class="text-accent ml-4 flex-shrink-0 transition-transform duration-300"
+                  :class="open === i ? 'rotate-45' : ''"
+                >
+                  ＋
+                </span>
+              </button>
+
+              <div
+                x-show="open === i"
+                x-transition:enter="transition ease-out duration-200"
+                x-transition:enter-start="opacity-0 -translate-y-1"
+                x-transition:enter-end="opacity-100 translate-y-0"
+                x-cloak
+              >
+                <p class="px-6 pb-5 text-slate-400 text-sm leading-relaxed" x-text="item.a"></p>
+              </div>
+            </div>
+          </template>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-white/5 px-6 lg:px-16 py-10">
+      <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-2">
+          <img src="https://datacloudhero.com/img/logo.svg" alt="datacloudhero" class="h-7 w-auto" />
+        </div>
+
+        <div class="mono text-xs text-slate-600">
+          © 2025 datacloudhero.com. Data &amp; AI Engineering.
+        </div>
+
+        <div class="flex gap-6">
+          <a href="#services" class="mono text-xs text-slate-500 hover:text-accent transition-colors">Services</a>
+          <a href="#stack" class="mono text-xs text-slate-500 hover:text-accent transition-colors">Stack</a>
+          <a href="#contact" class="mono text-xs text-slate-500 hover:text-accent transition-colors">Contact</a>
+          <a href="https://blog.datacloudhero.com" class="mono text-xs text-slate-500 hover:text-accent transition-colors">Blog</a>
+
+          <button
+            type="button"
+            data-cc="show-preferencesModal"
+            class="mono text-xs text-slate-500 hover:text-accent transition-colors bg-transparent border-0 p-0 cursor-pointer"
+          >
+            Cookie settings
+          </button>
+        </div>
+      </div>
+    </footer>
   </div>
-</footer>
-</div><!-- /page-wrapper -->
-<script src="https://unpkg.com/lucide@latest"></script>
-<script>
-  lucide.createIcons();
-</script>
-<script type="module" src="/assets/js/cookieconsent-config.js"></script>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    lucide.createIcons();
+  </script>
+
+  <script type="module" src="/assets/js/cookieconsent-config.js?v=4"></script>
 </body>
 </html>
