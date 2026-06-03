@@ -211,7 +211,7 @@ window.gtag('consent', 'default', {
   functionality_storage: 'granted',
   security_storage: 'granted',
   personalization_storage: 'denied',
-  wait_for_update: 500,
+  wait_for_update: 2000,
 });
 
 // 2. Если consent уже пришёл с блога — синхронизируем cc_cookie,
